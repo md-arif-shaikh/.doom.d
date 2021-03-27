@@ -84,8 +84,8 @@
 (defun arif/convert-time (from-zone to-zone time-to-convert)
   "Convert TIME from FROM-ZONE to TO-ZONE."
   (interactive "sFrom which timezone (use abbreviation, e.g., EST for Eeastern Standard Time):
-  sTo which timezone (use abbreviation, e.g., IST for Indian Standard Time):
-  sTime to be converted (HH:MM PM/pm(optional) DAY(optional)): ")
+sTo which timezone (use abbreviation, e.g., IST for Indian Standard Time):
+sTime to be converted (HH:MM PM/pm(optional) DAY(optional)): ")
   (let* ((time-zones '(("EST" . "-0500")
 		       ("CST" . "-0600")
 		       ("CDT" . "-0500")
@@ -99,7 +99,7 @@
 	 (time (parse-time-string time-to-convert))
 	 (from-zone-u (upcase from-zone))
 	 (to-zone-u (upcase to-zone))
-	 (from-sec (nth 0 time))
+	 ;; (from-sec (nth 0 time))
 	 (from-min (nth 1 time))
 	 (from-hour (nth 2 time))
 	 (from-day (nth 6 time)))
@@ -146,9 +146,28 @@
 ;;  :hook (dired-mode . #'dired-omit-mode))
 
 (use-package! dired-x
+  :after (dired)
   :config
   (setq dired-omit-verbose nil
         dired-omit-files
         (concat dired-omit-files "\\|^\\..+$"))
   (add-hook 'dired-mode-hook #'dired-omit-mode)
   (add-hook 'dired-mode-hook #'dired-hide-details-mode))
+
+;; jupter
+(use-package! jupyter
+  :defer)
+
+;; Custom commands
+(arif/load-file "~/.config/emacs/custom-commands.el")
+;; Start full screen
+(add-to-list 'default-frame-alist '(fullscreen . fullboth))
+;; Python environment
+(use-package! pyvenv
+  :defer
+  :init
+  (if (eq system-type 'darwin)
+      (setenv "WORKON_HOME" "/Users/arif/miniconda3/envs/")
+    (setenv "WORKON_HOME" "/home/arif/anaconda3/envs/"))
+  (pyvenv-mode 1)
+  (pyvenv-tracking-mode 1))
