@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: plot
+# key: pl
+# --
+${1:ax}.${2:plot}(${3:xdata}, ${4:ydata}, lw=${5:1}, c="${6:tab:orange}", ls="${7:solid}", label=r"${8:label}")

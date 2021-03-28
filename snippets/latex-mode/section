@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: section
+# key: ss
+# --
+\section{${1:section-name}}
+\label{${1:$(replace-in-string " " "_" yas-text)}}
+$0

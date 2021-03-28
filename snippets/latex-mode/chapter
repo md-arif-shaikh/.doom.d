@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: chapter
+# key: chapter
+# --
+\chapter{${1:chapter-name}}
+\label{${1:$(replace-in-string " " "_" yas-text)}}
+$0

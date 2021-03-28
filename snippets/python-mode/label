@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: label
+# key: label
+# --
+${1:ax}.set_${2:axis}label(r"${3:label}")
