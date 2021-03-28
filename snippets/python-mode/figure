@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: figure
+# key: fig
+# --
+${1:fig}, ${2:ax} = ${3:plt}.subplots(nrows=${4:nrows}, ncols=${5:ncols}, figsize=${6:figsize})
+$0

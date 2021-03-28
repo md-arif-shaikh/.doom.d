@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: python-source block
+# key: spy
+# --
+#+BEGIN_SRC python :session ${1:} :results ${2:output}
+    $0
+#+END_SRC

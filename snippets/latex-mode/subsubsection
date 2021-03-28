@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: subsubsection
+# key: ss2
+# --
+\subsubsection{${1:subsubsection-name}}
+\label{${1:$(replace-in-string " " "_" yas-text)}}
+$0

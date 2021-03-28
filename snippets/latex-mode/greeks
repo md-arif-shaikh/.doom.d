@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: greek symbol
+# key: @
+# --
+${1:symbol$(arif/latex-greek-symbols yas-text)} $0
