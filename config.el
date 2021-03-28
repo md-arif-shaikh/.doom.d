@@ -69,8 +69,8 @@
 (defun arif/connect-remote-dir (remote-machine-name)
   "Connect to REMOTE-MACHINE-NAME."
   (interactive "sRemote Machine Name: ")
-  (setq remote-user-name (cdr (assoc remote-machine-name remote-user-names)))
-  (set-buffer (dired (format "/sshx:%s:/home/%s/" remote-machine-name remote-user-name)))
+  (let ((remote-user-name (cdr (assoc remote-machine-name remote-user-names))))
+    (set-buffer (dired (format "/sshx:%s:/home/%s/" remote-machine-name remote-user-name))))
   )
 
 (defun arif/connect-remote-term (remote-machine-name)
@@ -165,10 +165,7 @@ sTime to be converted (HH:MM PM/pm(optional) DAY(optional)): ")
 
 (add-to-list 'default-frame-alist '(fullscreen . fullboth))
 
-(use-package! yasnippets
-  :defer
-  :init
-  (add-hook 'after-init-hook 'yas-global-mode)
+(use-package! yasnippet
   :config
   (setq yas-snippet-dirs '("~/.doom.d/snippets")))
 
@@ -177,8 +174,7 @@ sTime to be converted (HH:MM PM/pm(optional) DAY(optional)): ")
 
 (defun arif/latex-greek-symbols (english-symbol)
   (interactive)
-  (defvar arif/greek-symbols)
-  (setq arif/greek-symbols '(("a" . "\\alpha")
+  (let ((arif/greek-symbols '(("a" . "\\alpha")
 			     ("b" . "\\beta")
 			     ("c" . "\\chi")
 			     ("d" . "\\delta")
@@ -203,7 +199,6 @@ sTime to be converted (HH:MM PM/pm(optional) DAY(optional)): ")
 			     ("t" . "\\tau")
 			     ("x" . "\\xi")
 			     ("ve" . "\\varepsilon")
-			     ("vp" . "\\varphi"))
-	)
-  (cdr (assoc english-symbol arif/greek-symbols))
+			     ("vp" . "\\varphi"))))
+  (cdr (assoc english-symbol arif/greek-symbols)))
   )
